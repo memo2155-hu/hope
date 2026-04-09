@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hope Center</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<img src="https://assets.simpleviewinc.com/simpleview/image/upload/c_limit,h_1200,q_75,w_1200/v1/crm/lexington/Hope-Center-Website-Logo-Transparent-BG_BF73E67E-0635-BE67-A1A1BE86C2209187-bf73e55ad9cdfd7_bf73ef73-e193-f401-35a1b027e4b79562.png" class="logo">
+
+<!-- Login -->
+<div class="container section" id="loginPage" style="display:block;">
+    <h1>Hope Center</h1>
+    <input type="text" id="username" placeholder="Enter your name">
+    <button onclick="login()">Login</button>
+</div>
+
+<!-- Dashboard -->
+<div class="container section" id="dashboardPage">
+    <h2 id="welcome"></h2>
+    <button onclick="showSection('tasksPage')">Tasks</button>
+    <button onclick="showSection('homeworkPage')">Homework</button>
+    <button onclick="showSection('notesPage')">Notes</button>
+    <button onclick="logout()">Logout</button>
+</div>
+
+<!-- Tasks -->
+<div class="container section" id="tasksPage">
+    <h1>Tasks</h1>
+    <ul id="tasksList"></ul>
+    <input id="taskInput" placeholder="Add task">
+    <button onclick="addTask()">Add</button>
+    <button onclick="showSection('dashboardPage')">Back</button>
+</div>
+
+<!-- Homework -->
+<div class="container section" id="homeworkPage">
+    <h1>Homework</h1>
+    <ul id="homeworkList"></ul>
+    <input id="homeworkInput" placeholder="Add homework">
+    <button onclick="addHomework()">Add</button>
+    <button onclick="showSection('dashboardPage')">Back</button>
+</div>
+
+<!-- Notes -->
+<div class="container section" id="notesPage">
+    <h1>Notes</h1>
+    <textarea id="notesArea"></textarea>
+    <button onclick="saveNotes()">Save</button>
+    <button onclick="showSection('dashboardPage')">Back</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
