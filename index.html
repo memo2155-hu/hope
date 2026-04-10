@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hope Center</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background-color: #cce7ff;
+}
+
+/* Logo */
+.logo {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 40px;
+    color: white;
+}
+
+/* Box */
+.container {
+    background: white;
+    padding: 40px;
+    margin: 120px auto;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+/* Inputs */
+input, textarea {
+    width: 90%;
+    padding: 12px;
+    margin: 10px 0;
+}
+
+/* Buttons */
+button {
+    width: 90%;
+    padding: 12px;
+    margin: 8px 0;
+    background: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+.section {
+    display: none;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1 class="logo">Hope Center</h1>
+
+<!-- LOGIN -->
+<div class="container section" id="loginPage" style="display:block;">
+    <h2>Login</h2>
+    
+    <input id="username" placeholder="Enter username">
+    <input id="password" type="password" placeholder="Enter password">
+    
+    <button onclick="login()">Login</button>
+</div>
+
+<!-- DASHBOARD -->
+<div class="container section" id="dashboardPage">
+    <h2 id="welcome"></h2>
+
+    <button onclick="showSection('tasksPage')">Tasks</button>
+    <button onclick="showSection('homeworkPage')">Homework</button>
+    <button onclick="showSection('notesPage')">Notes</button>
+
+    <button onclick="logout()">Logout</button>
+</div>
+
+<!-- TASKS -->
+<div class="container section" id="tasksPage">
+    <h2>Tasks</h2>
+    <ul id="tasksList"></ul>
+    <input id="taskInput" placeholder="Add task">
+    <button onclick="addTask()">Add Task</button>
+    <button onclick="clearTasks()">Clear Tasks</button>
+    <button onclick="showSection('dashboardPage')">Back</button>
+</div>
+
+<!-- HOMEWORK -->
+<div class="container section" id="homeworkPage">
+    <h2>Homework</h2>
+    <ul id="homeworkList"></ul>
+    <input id="homeworkInput" placeholder="Add homework">
+    <button onclick="addHomework()">Add Homework</button>
+    <button onclick="clearHomework()">Clear Homework</button>
+    <button onclick="showSection('dashboardPage')">Back</button>
+</div>
+
+<!-- NOTES -->
+<div class="container section" id="notesPage">
+    <h2>Notes</h2>
+    <textarea id="notesArea" placeholder="Write notes..."></textarea>
+    <button onclick="saveNotes()">Save Notes</button>
+    <button onclick="clearNotes()">Clear Notes</button>
+    <button onclick="showSection('dashboardPage')">Back</button>
+</div>
+
+<script>
+let currentUser = "";
+
+// لما الصفحة تفتح
+window.onload = function () {
+    let savedUser = localStorage.getItem("user");
+    if (savedUser) {
+        currentUser = savedUser;
+        document.getElementById("welcome").innerText = "Welcome " + savedUser;
+        showSection("dashboardPage");
+        loadAll();
+    }
+};
+
+// LOGIN
+function login() {
+    let user = document.getElementById("username").value;
+    let pass = document.getElementById("password").value;
+
+    if(user === "memo" && pass === "memo") {
+        currentUser = user;
+        localStorage.setItem("user", user);
+        document.getElementById("welcome").innerText = "Welcome " + user;
+        showSection("dashboardPage");
+        loadAll();
+    } else {
+        alert("Wrong Username or Password ❌");
+    }
+}
+
+// LOGOUT
+function logout() {
+    localStorage.removeItem("user");
+    showSection("loginPage");
+}
+
+// NAVIGATION
+function showSection(id) {
+    document.querySelectorAll(".section").forEach(s => s.style.display = "none");
+    document.getElementById(id).style.display = "block";
+}
+
+// TASKS
+function addTask() {
+    let val = document.getElementById("taskInput").value;
+    let data = JSON.parse(localStorage.getItem("tasks")) || [];
+    data.push(val);
+    localStorage.setItem("tasks", JSON.stringify(data));
+    loadTasks();
+}
+
+function loadTasks() {
+    let data = JSON.parse(localStorage.getItem("tasks")) || [];
+    let list = document.getElementById("tasksList");
+    list.innerHTML = "";
+    data.forEach((t, i) => {
+        let li = document.createElement("li");
+        li.innerHTML = t + " <button onclick='deleteTask(" + i + ")'>❌</button>";
+        list.appendChild(li);
+    });
+}
+
+function deleteTask(i) {
+    let data = JSON.parse(localStorage.getItem("tasks"));
+    data.splice(i,1);
+    localStorage.setItem("tasks", JSON.stringify(data));
+    loadTasks();
+}
+
+function clearTasks() {
+    localStorage.removeItem("tasks");
+    loadTasks();
+}
+
+// HOMEWORK
+function addHomework() {
+    let val = document.getElementById("homeworkInput").value;
+    let data = JSON.parse(localStorage.getItem("homework")) || [];
+    data.push(val);
+    localStorage.setItem("homework", JSON.stringify(data));
+    loadHomework();
+}
+
+function loadHomework() {
+    let data = JSON.parse(localStorage.getItem("homework")) || [];
+    let list = document.getElementById("homeworkList");
+    list.innerHTML = "";
+    data.forEach((h, i) => {
+        let li = document.createElement("li");
+        li.innerHTML = h + " <button onclick='deleteHomework(" + i + ")'>❌</button>";
+        list.appendChild(li);
+    });
+}
+
+function deleteHomework(i) {
+    let data = JSON.parse(localStorage.getItem("homework"));
+    data.splice(i,1);
+    localStorage.setItem("homework", JSON.stringify(data));
+    loadHomework();
+}
+
+function clearHomework() {
+    localStorage.removeItem("homework");
+    loadHomework();
+}
+
+// NOTES
+function saveNotes() {
+    let val = document.getElementById("notesArea").value;
+    localStorage.setItem("notes", val);
+}
+
+function clearNotes() {
+    localStorage.removeItem("notes");
+    document.getElementById("notesArea").value = "";
+}
+
+function loadNotes() {
+    let val = localStorage.getItem("notes");
+    document.getElementById("notesArea").value = val || "";
+}
+
+// LOAD ALL
+function loadAll() {
+    loadTasks();
+    loadHomework();
+    loadNotes();
+}
+</script>
+
+</body>
+</html>
