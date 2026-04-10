@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hope Center</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: linear-gradient(rgba(204,231,255,0.9), rgba(204,231,255,0.9)),
+    url('https://assets.simpleviewinc.com/simpleview/image/upload/c_limit,h_1200,q_75,w_1200/v1/crm/lexington/Hope-Center-Website-Logo-Transparent-BG_BF73E67E-0635-BE67-A1A1BE86C2209187-bf73e55ad9cdfd7_bf73ef73-e193-f401-35a1b027e4b79562.png');
+    background-size: cover;
+}
+
+/* Logo */
+.logo {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 35px;
+    color: white;
+}
+
+/* Box */
+.container {
+    background: white;
+    padding: 40px;
+    margin: 120px auto;
+    width: 95%;
+    max-width: 500px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+/* Inputs */
+input, textarea {
+    width: 90%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+/* Buttons */
+button {
+    width: 90%;
+    padding: 12px;
+    margin: 8px 0;
+    background: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+/* Sections */
+.section {
+    display: none;
+}
+
+/* List */
+li {
+    margin: 10px 0;
+    background: #f2f2f2;
+    padding: 10px;
+    border-radius: 10px;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1 class="logo">💙 Hope Center</h1>
+
+<!-- LOGIN -->
+<div class="container section" id="loginPage" style="display:block;">
+    <h2>🔐 Login</h2>
+
+    <input id="username" placeholder="👤 Username">
+    <input id="password" type="password" placeholder="🔑 Password">
+
+    <button onclick="login()">Login</button>
+</div>
+
+<!-- DASHBOARD -->
+<div class="container section" id="dashboardPage">
+    <h2 id="welcome"></h2>
+
+    <button onclick="showSection('tasksPage')">📌 Tasks</button>
+    <button onclick="showSection('homeworkPage')">📚 Homework</button>
+    <button onclick="showSection('notesPage')">📝 Notes</button>
+
+    <button onclick="logout()">🚪 Logout</button>
+</div>
+
+<!-- TASKS -->
+<div class="container section" id="tasksPage">
+    <h2>📌 Tasks</h2>
+
+    <input id="taskStudent" placeholder="👩‍🎓 Student Name">
+    <input id="taskInput" placeholder="✏️ Task">
+
+    <ul id="tasksList"></ul>
+
+    <button onclick="addTask()">Add Task</button>
+    <button onclick="clearTasks()">Clear</button>
+    <button onclick="showSection('dashboardPage')">⬅ Back</button>
+</div>
+
+<!-- HOMEWORK -->
+<div class="container section" id="homeworkPage">
+    <h2>📚 Homework</h2>
+
+    <input id="homeStudent" placeholder="👩‍🎓 Student Name">
+    <input id="homeworkInput" placeholder="✏️ Homework">
+
+    <ul id="homeworkList"></ul>
+
+    <button onclick="addHomework()">Add Homework</button>
+    <button onclick="clearHomework()">Clear</button>
+    <button onclick="showSection('dashboardPage')">⬅ Back</button>
+</div>
+
+<!-- NOTES -->
+<div class="container section" id="notesPage">
+    <h2>📝 Notes</h2>
+
+    <textarea id="notesArea" placeholder="Write notes..."></textarea>
+
+    <button onclick="saveNotes()">Save</button>
+    <button onclick="clearNotes()">Clear</button>
+    <button onclick="showSection('dashboardPage')">⬅ Back</button>
+</div>
+
+<script>
+let currentUser = "";
+
+// تحميل
+window.onload = function () {
+    let savedUser = localStorage.getItem("user");
+    if (savedUser) {
+        currentUser = savedUser;
+        document.getElementById("welcome").innerText = "Welcome " + savedUser;
+        showSection("dashboardPage");
+        loadAll();
+    }
+};
+
+// LOGIN
+function login() {
+    let user = document.getElementById("username").value;
+    let pass = document.getElementById("password").value;
+
+    if(user === "memo" && pass === "memo") {
+        currentUser = user;
+        localStorage.setItem("user", user);
+        document.getElementById("welcome").innerText = "Welcome " + user;
+        showSection("dashboardPage");
+        loadAll();
+    } else {
+        alert("Wrong Username or Password ❌");
+    }
+}
+
+// LOGOUT
+function logout() {
+    localStorage.removeItem("user");
+    showSection("loginPage");
+}
+
+// NAVIGATION
+function showSection(id) {
+    document.querySelectorAll(".section").forEach(s => s.style.display = "none");
+    document.getElementById(id).style.display = "block";
+}
+
+// TASKS
+function addTask() {
+    let student = document.getElementById("taskStudent").value;
+    let task = document.getElementById("taskInput").value;
+
+    let data = JSON.parse(localStorage.getItem("tasks")) || [];
+    data.push(student + " - " + task);
+
+    localStorage.setItem("tasks", JSON.stringify(data));
+    loadTasks();
+}
+
+function loadTasks() {
+    let data = JSON.parse(localStorage.getItem("tasks")) || [];
+    let list = document.getElementById("tasksList");
+    list.innerHTML = "";
+
+    data.forEach((t, i) => {
+        let li = document.createElement("li");
+        li.innerHTML = "👩‍🎓 " + t + " <button onclick='deleteTask(" + i + ")'>❌</button>";
+        list.appendChild(li);
+    });
+}
+
+function deleteTask(i) {
+    let data = JSON.parse(localStorage.getItem("tasks"));
+    data.splice(i,1);
+    localStorage.setItem("tasks", JSON.stringify(data));
+    loadTasks();
+}
+
+function clearTasks() {
+    localStorage.removeItem("tasks");
+    loadTasks();
+}
+
+// HOMEWORK
+function addHomework() {
+    let student = document.getElementById("homeStudent").value;
+    let hw = document.getElementById("homeworkInput").value;
+
+    let data = JSON.parse(localStorage.getItem("homework")) || [];
+    data.push(student + " - " + hw);
+
+    localStorage.setItem("homework", JSON.stringify(data));
+    loadHomework();
+}
+
+function loadHomework() {
+    let data = JSON.parse(localStorage.getItem("homework")) || [];
+    let list = document.getElementById("homeworkList");
+    list.innerHTML = "";
+
+    data.forEach((h, i) => {
+        let li = document.createElement("li");
+        li.innerHTML = "👩‍🎓 " + h + " <button onclick='deleteHomework(" + i + ")'>❌</button>";
+        list.appendChild(li);
+    });
+}
+
+function deleteHomework(i) {
+    let data = JSON.parse(localStorage.getItem("homework"));
+    data.splice(i,1);
+    localStorage.setItem("homework",
