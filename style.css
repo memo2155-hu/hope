@@ -1,0 +1,111 @@
+:root{
+--primary:#0077b6;
+--bg:#0f172a;
+--card:rgba(255,255,255,0.08);
+--text:#fff;
+}
+
+body{
+margin:0;
+font-family:Cairo;
+background:var(--bg);
+color:var(--text);
+overflow-x:hidden;
+}
+
+/* background animation */
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:radial-gradient(circle at 20% 20%,#0077b6,transparent),
+radial-gradient(circle at 80% 80%,#00b4d8,transparent);
+animation:move 8s infinite alternate;
+opacity:.4;
+z-index:-1;
+}
+
+@keyframes move{
+from{transform:translate(-10%,-10%)}
+to{transform:translate(10%,10%)}
+}
+
+/* LOGIN */
+.center{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.card{
+width:320px;
+padding:25px;
+background:var(--card);
+backdrop-filter:blur(20px);
+border-radius:20px;
+text-align:center;
+animation:pop .6s ease;
+}
+
+@keyframes pop{
+from{transform:scale(.8);opacity:0}
+to{transform:scale(1);opacity:1}
+}
+
+input,textarea{
+width:100%;
+margin:8px 0;
+padding:12px;
+border:none;
+border-radius:10px;
+outline:none;
+}
+
+button{
+padding:10px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+background:#00b4d8;
+color:white;
+font-weight:bold;
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.1);
+}
+
+/* APP */
+.hidden{display:none;}
+
+header{
+background:linear-gradient(135deg,#0077b6,#00b4d8);
+padding:15px;
+text-align:center;
+}
+
+.nav button{
+width:50px;
+height:50px;
+margin:5px;
+font-size:20px;
+border-radius:12px;
+}
+
+.section{
+padding:20px;
+}
+
+ul{
+list-style:none;
+padding:0;
+}
+
+li{
+background:rgba(255,255,255,0.1);
+margin:6px 0;
+padding:10px;
+border-radius:10px;
+}
