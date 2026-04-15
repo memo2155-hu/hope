@@ -1,0 +1,67 @@
+body {
+    margin: 0;
+    font-family: Cairo, sans-serif;
+    background: #0f172a;
+    color: white;
+}
+
+/* LOGIN */
+.center {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle, #0077b6, #0f172a);
+}
+
+.box {
+    width: 300px;
+    padding: 30px;
+    border-radius: 15px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(15px);
+    text-align: center;
+}
+
+input {
+    width: 100%;
+    margin: 8px 0;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 10px;
+    background: #00b4d8;
+    color: white;
+    cursor: pointer;
+}
+
+/* APP */
+#app {
+    display: none;
+}
+
+header {
+    background: #0077b6;
+    padding: 20px;
+    text-align: center;
+}
+
+main {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+.card {
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 10px 0;
+}
