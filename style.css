@@ -1,0 +1,130 @@
+:root {
+    --primary: #0077b6;
+    --bg: #f0f4f8;
+    --text: #2d3748;
+    --card: #ffffff;
+    --radius: 15px;
+    --shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+:root.dark {
+    --bg: #0f172a;
+    --text: #e2e8f0;
+    --card: #1e293b;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Cairo', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: 0.3s;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, var(--primary), #00b4d8);
+    color: white;
+    text-align: center;
+    padding: 40px;
+}
+
+/* Nav */
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background: var(--card);
+    position: sticky;
+    top: 0;
+}
+
+.tools button {
+    margin: 0 3px;
+    background: var(--primary);
+    border: none;
+    padding: 8px;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+}
+
+.login-btn {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* Container */
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Card */
+.card {
+    background: var(--card);
+    padding: 20px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+}
+
+/* Services */
+.services {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.item {
+    background: var(--bg);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* Inputs */
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+}
+
+.modal-content {
+    background: var(--card);
+    width: 300px;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: var(--radius);
+}
+
+.close {
+    float: left;
+    cursor: pointer;
+    font-size: 22px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: var(--card);
+}
