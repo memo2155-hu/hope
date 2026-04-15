@@ -1,16 +1,15 @@
 function login(btn){
 
-animate(btn);
+let u=document.getElementById("username").value.trim();
+let p=document.getElementById("password").value.trim();
 
-let u=document.getElementById("username").value;
-let p=document.getElementById("password").value;
+console.log(u,p); // للتأكد
 
 if(u==="admin" && p==="1234"){
-localStorage.setItem("login","true");
-localStorage.setItem("user",u);
-showApp();
+    document.getElementById("loginPage").style.display="none";
+    document.getElementById("app").style.display="block";
 }else{
-document.getElementById("msg").innerText="❌ بيانات غير صحيحة";
+    document.getElementById("msg").innerText="❌ خطأ في البيانات";
 }
 }
 
