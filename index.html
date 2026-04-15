@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>منصة سند</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<!-- LOGIN -->
+<div id="loginPage" class="center">
+    <div class="card">
+        <h1>👋 أهلاً بك</h1>
+
+        <input id="username" placeholder="اسم المستخدم">
+        <input id="password" type="password" placeholder="كلمة المرور">
+
+        <button onclick="login(this)">🚀 دخول</button>
+
+        <p id="msg"></p>
+    </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="app" class="hidden">
+
+<header>
+    <h1>💙 منصة سند</h1>
+
+    <div class="nav">
+        <button onclick="showSection('home')">🏠</button>
+        <button onclick="showSection('tasks')">✅</button>
+        <button onclick="showSection('homeworks')">📚</button>
+        <button onclick="showSection('notes')">📝</button>
+        <button onclick="logout()">🚪</button>
+    </div>
+</header>
+
+<main>
+
+<!-- HOME -->
+<section id="home" class="section">
+    <h2>🏠 Home</h2>
+    <p id="welcome"></p>
+</section>
+
+<!-- TASKS -->
+<section id="tasks" class="section hidden">
+    <h2>✅ Tasks</h2>
+
+    <input id="taskInput" placeholder="اكتب مهمة">
+
+    <div class="row">
+        <button onclick="addTask(this)">➕ Add</button>
+        <button class="clear" onclick="clearList('taskList')">🧹 Clear</button>
+    </div>
+
+    <ul id="taskList"></ul>
+</section>
+
+<!-- HOMEWORK -->
+<section id="homeworks" class="section hidden">
+    <h2>📚 Homeworks</h2>
+
+    <input id="hwInput" placeholder="اكتب واجب">
+
+    <div class="row">
+        <button onclick="addHomework(this)">➕ Add</button>
+        <button class="clear" onclick="clearList('hwList')">🧹 Clear</button>
+    </div>
+
+    <ul id="hwList"></ul>
+</section>
+
+<!-- NOTES -->
+<section id="notes" class="section hidden">
+    <h2>📝 Notes</h2>
+
+    <textarea id="noteInput" placeholder="اكتب ملاحظة"></textarea>
+
+    <div class="row">
+        <button onclick="addNote(this)">➕ Add</button>
+        <button class="clear" onclick="clearList('notesList')">🧹 Clear</button>
+    </div>
+
+    <ul id="notesList"></ul>
+</section>
+
+</main>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
