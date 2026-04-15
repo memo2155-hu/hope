@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="منصة سند لدعم ذوي الهمم والخدمات التأهيلية">
+    <meta name="theme-color" content="#0077b6">
+    <title>منصة سند</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+<header>
+    <h1>منصة سند 💙</h1>
+    <p>نحن معك خطوة بخطوة نحو مستقبل أفضل</p>
+</header>
+
+<nav>
+    <div class="tools">
+        <button onclick="App.toggleDark()"><i class="fas fa-moon"></i></button>
+        <button onclick="App.toggleContrast()"><i class="fas fa-adjust"></i></button>
+        <button onclick="App.increaseText()"><i class="fas fa-search-plus"></i></button>
+        <button onclick="App.speak()"><i class="fas fa-volume-up"></i></button>
+    </div>
+
+    <button class="login-btn" onclick="App.openLogin()">دخول</button>
+</nav>
+
+<main class="container">
+
+    <section class="card">
+        <h2>🔎 ابحث عن خدمة</h2>
+        <input id="serviceSearch" placeholder="ابحث هنا...">
+
+        <div class="services">
+            <div class="item">أدوات مساعدة</div>
+            <div class="item">استشارات</div>
+            <div class="item">دعم نفسي</div>
+            <div class="item">تأهيل حركي</div>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2>⭐ قصص نجاح</h2>
+        <p>قصص ملهمة من أبطال حقيقيين يثبتوا إن المستحيل ممكن 💪</p>
+    </section>
+
+    <section class="card">
+        <h2>📞 تواصل معنا</h2>
+        <p>نحن هنا لدعمك في أي وقت</p>
+    </section>
+
+</main>
+
+<footer>
+    جميع الحقوق محفوظة © 2026 - منصة سند
+</footer>
+
+<!-- Login Modal -->
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="App.closeLogin()">&times;</span>
+
+        <h2>تسجيل الدخول</h2>
+
+        <input id="email" placeholder="البريد الإلكتروني">
+        <input id="password" type="password" placeholder="كلمة المرور">
+
+        <button onclick="App.login()">دخول</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
