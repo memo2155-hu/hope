@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sanad Platform</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<!-- LOGIN -->
+<div id="loginPage" class="center">
+<div class="card">
+<h1>👋 Welcome</h1>
+
+<input id="username" placeholder="Username">
+<input id="password" type="password" placeholder="Password">
+
+<button onclick="login()">Login</button>
+
+<p id="msg"></p>
+</div>
+</div>
+
+<!-- APP -->
+<div id="app" class="hidden">
+
+<header>
+<h1>💙 Sanad Platform</h1>
+
+<div class="nav">
+<button onclick="showSection('home')">🏠</button>
+<button onclick="showSection('tasks')">✅</button>
+<button onclick="showSection('homeworks')">📚</button>
+<button onclick="showSection('notes')">📝</button>
+<button onclick="toggleDarkMode()">🌙</button>
+<button onclick="changePassword()">🔐</button>
+<button onclick="logout()">🚪</button>
+</div>
+</header>
+
+<main>
+
+<!-- HOME -->
+<section id="home" class="section">
+<h2>Dashboard</h2>
+
+<p id="welcome"></p>
+
+<div class="stats">
+<div class="box" id="taskCount"></div>
+<div class="box" id="hwCount"></div>
+<div class="box" id="noteCount"></div>
+<div class="box" id="ranking"></div>
+</div>
+
+<canvas id="chart"></canvas>
+</section>
+
+<!-- TASKS -->
+<section id="tasks" class="section hidden">
+<h2>Tasks</h2>
+
+<input id="taskInput" placeholder="Add task">
+<input id="searchTask" placeholder="Search..." oninput="renderTasks()">
+
+<div class="row">
+<button onclick="addTask()">Add</button>
+<button class="clear" onclick="clearList('tasks')">Clear</button>
+</div>
+
+<ul id="taskList"></ul>
+</section>
+
+<!-- HOMEWORKS -->
+<section id="homeworks" class="section hidden">
+<h2>Homeworks</h2>
+
+<input id="hwInput" placeholder="Add homework">
+
+<div class="row">
+<button onclick="addHomework()">Add</button>
+<button class="clear" onclick="clearList('homeworks')">Clear</button>
+</div>
+
+<ul id="hwList"></ul>
+</section>
+
+<!-- NOTES -->
+<section id="notes" class="section hidden">
+<h2>Notes</h2>
+
+<textarea id="noteInput" placeholder="Add note"></textarea>
+
+<div class="row">
+<button onclick="addNote()">Add</button>
+<button class="clear" onclick="clearList('notes')">Clear</button>
+</div>
+
+<ul id="notesList"></ul>
+</section>
+
+</main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
