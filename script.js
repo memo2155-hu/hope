@@ -1,0 +1,142 @@
+function key(type){
+  return "user_guest_"+type;
+}
+
+/* NAV */
+function showSection(id){
+  document.querySelectorAll(".section").forEach(s=>s.classList.add("hidden"));
+  document.getElementById(id).classList.remove("hidden");
+}
+
+/* TASKS */
+function addTask(){
+  let t = taskInput.value.trim();
+  if(!t) return;
+
+  let arr = JSON.parse(localStorage.getItem(key("tasks"))||"[]");
+  arr.push(t);
+
+  localStorage.setItem(key("tasks"),JSON.stringify(arr));
+
+  taskInput.value="";
+  renderTasks();
+  updateStats();
+}
+
+function renderTasks(){
+  taskList.innerHTML="";
+  let arr = JSON.parse(localStorage.getItem(key("tasks"))||"[]");
+
+  arr.forEach((t,i)=>{
+    let li=document.createElement("li");
+
+    let span=document.createElement("span");
+    span.innerText=t;
+
+    let del=document.createElement("button");
+    del.innerText="Delete";
+    del.onclick=()=>{
+      arr.splice(i,1);
+      localStorage.setItem(key("tasks"),JSON.stringify(arr));
+      renderTasks();
+      updateStats();
+    };
+
+    li.append(span,del);
+    taskList.appendChild(li);
+  });
+}
+
+/* HOMEWORKS */
+function addHomework(){
+  let t = hwInput.value.trim();
+  if(!t) return;
+
+  let arr = JSON.parse(localStorage.getItem(key("homeworks"))||"[]");
+  arr.push(t);
+
+  localStorage.setItem(key("homeworks"),JSON.stringify(arr));
+
+  hwInput.value="";
+  renderHomeworks();
+  updateStats();
+}
+
+function renderHomeworks(){
+  hwList.innerHTML="";
+  let arr = JSON.parse(localStorage.getItem(key("homeworks"))||"[]");
+
+  arr.forEach((t,i)=>{
+    let li=document.createElement("li");
+
+    let span=document.createElement("span");
+    span.innerText=t;
+
+    let del=document.createElement("button");
+    del.innerText="Delete";
+    del.onclick=()=>{
+      arr.splice(i,1);
+      localStorage.setItem(key("homeworks"),JSON.stringify(arr));
+      renderHomeworks();
+      updateStats();
+    };
+
+    li.append(span,del);
+    hwList.appendChild(li);
+  });
+}
+
+/* NOTES */
+function addNote(){
+  let t = noteInput.value.trim();
+  if(!t) return;
+
+  let arr = JSON.parse(localStorage.getItem(key("notes"))||"[]");
+  arr.push(t);
+
+  localStorage.setItem(key("notes"),JSON.stringify(arr));
+
+  noteInput.value="";
+  renderNotes();
+  updateStats();
+}
+
+function renderNotes(){
+  notesList.innerHTML="";
+  let arr = JSON.parse(localStorage.getItem(key("notes"))||"[]");
+
+  arr.forEach((t,i)=>{
+    let li=document.createElement("li");
+
+    let span=document.createElement("span");
+    span.innerText=t;
+
+    let del=document.createElement("button");
+    del.innerText="Delete";
+    del.onclick=()=>{
+      arr.splice(i,1);
+      localStorage.setItem(key("notes"),JSON.stringify(arr));
+      renderNotes();
+      updateStats();
+    };
+
+    li.append(span,del);
+    notesList.appendChild(li);
+  });
+}
+
+/* STATS */
+function updateStats(){
+  taskCount.innerText="Tasks: "+(JSON.parse(localStorage.getItem(key("tasks"))||"[]").length);
+  hwCount.innerText="Homeworks: "+(JSON.parse(localStorage.getItem(key("homeworks"))||"[]").length);
+  noteCount.innerText="Notes: "+(JSON.parse(localStorage.getItem(key("notes"))||"[]").length);
+}
+
+/* START */
+window.onload=()=>{
+  showSection("home");
+  renderTasks();
+  renderHomeworks();
+  renderNotes();
+  updateStats();
+};
