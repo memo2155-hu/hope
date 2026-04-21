@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sanad Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<header>
+<h1>Sanad Dashboard</h1>
+</header>
+
+<main>
+
+<div class="box">
+<h2>Tasks</h2>
+<input id="taskInput" placeholder="Add task">
+<button onclick="addTask()">Add</button>
+<ul id="taskList"></ul>
+</div>
+
+<div class="box">
+<h2>Homeworks</h2>
+<input id="hwInput" placeholder="Add homework">
+<button onclick="addHomework()">Add</button>
+<ul id="hwList"></ul>
+</div>
+
+<div class="box">
+<h2>Notes</h2>
+<input id="noteInput" placeholder="Add note">
+<button onclick="addNote()">Add</button>
+<ul id="noteList"></ul>
+</div>
+
+<canvas id="chart"></canvas>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
