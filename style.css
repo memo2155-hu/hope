@@ -1,0 +1,94 @@
+body{
+  margin:0;
+  font-family:Arial;
+  color:white;
+  background:#0f172a;
+  overflow-x:hidden;
+}
+
+/* animated background */
+.bg{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:linear-gradient(-45deg,#0f172a,#0ea5e9,#1e293b,#0284c7);
+  background-size:400% 400%;
+  animation:move 10s ease infinite;
+  z-index:-1;
+}
+
+@keyframes move{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+header{
+  text-align:center;
+  padding:15px;
+}
+
+/* hero */
+.hero{
+  text-align:center;
+  padding:20px;
+  background:rgba(255,255,255,0.08);
+  margin:10px;
+  border-radius:15px;
+}
+
+/* stats */
+.stats{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.card{
+  padding:15px;
+  background:rgba(255,255,255,0.1);
+  border-radius:10px;
+  min-width:120px;
+  text-align:center;
+}
+
+/* boxes */
+.box{
+  margin:15px auto;
+  width:90%;
+  max-width:400px;
+  padding:15px;
+  background:rgba(255,255,255,0.1);
+  border-radius:12px;
+}
+
+input{
+  width:70%;
+  padding:8px;
+  margin:5px 0;
+}
+
+button{
+  padding:8px 12px;
+  border:none;
+  border-radius:8px;
+  background:#00b4d8;
+  color:white;
+  cursor:pointer;
+}
+
+/* list */
+ul{
+  list-style:none;
+  padding:0;
+}
+
+li{
+  display:flex;
+  justify-content:space-between;
+  padding:8px;
+  margin:5px 0;
+  background:rgba(255,255,255,0.1);
+  border-radius:8px;
+}
