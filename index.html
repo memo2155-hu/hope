@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sanad Workspace</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<h1>Sanad Workspace</h1>
+
+<div class="nav">
+  <button onclick="show('home')">Home</button>
+  <button onclick="show('tasks')">Tasks</button>
+  <button onclick="show('homeworks')">Homeworks</button>
+  <button onclick="show('notes')">Notes</button>
+</div>
+
+<div id="home">
+  <h2>Dashboard</h2>
+  <p id="counts">Tasks: 0 | Homeworks: 0 | Notes: 0</p>
+  <canvas id="chart"></canvas>
+</div>
+
+<div id="tasks" class="sec">
+  <h2>Tasks</h2>
+  <input id="taskInput">
+  <button onclick="addTask()">Add</button>
+  <ul id="taskList"></ul>
+</div>
+
+<div id="homeworks" class="sec" style="display:none">
+  <h2>Homeworks</h2>
+  <input id="hwInput">
+  <button onclick="addHW()">Add</button>
+  <ul id="hwList"></ul>
+</div>
+
+<div id="notes" class="sec" style="display:none">
+  <h2>Notes</h2>
+  <input id="noteInput">
+  <button onclick="addNote()">Add</button>
+  <ul id="noteList"></ul>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
