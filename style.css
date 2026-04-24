@@ -1,0 +1,121 @@
+body{
+  margin:0;
+  font-family:Arial;
+  color:#e5e7eb;
+  background:#0b0f17;
+}
+
+/* header */
+header{
+  text-align:center;
+  padding:20px;
+}
+
+/* nav */
+.nav{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+}
+
+.nav-btn{
+  padding:8px 14px;
+  border-radius:8px;
+  border:1px solid rgba(255,255,255,0.1);
+  background:rgba(255,255,255,0.05);
+  color:white;
+  cursor:pointer;
+}
+
+.nav-btn.active{
+  background:#f7c6d9;
+  color:#000;
+}
+
+/* search */
+.search-box{
+  margin-top:10px;
+}
+
+#searchInput{
+  width:60%;
+  padding:10px;
+  border-radius:8px;
+  border:none;
+}
+
+/* section */
+.section{
+  padding:20px;
+}
+
+.hidden{
+  display:none;
+}
+
+/* welcome */
+.welcome{
+  padding:15px;
+  background:#1f1f1f;
+  border-radius:10px;
+}
+
+/* cards */
+.cards{
+  display:flex;
+  gap:10px;
+  margin-top:10px;
+}
+
+.card{
+  padding:10px;
+  background:#1f1f1f;
+  border-radius:10px;
+}
+
+/* inputs */
+input{
+  padding:10px;
+  border-radius:8px;
+}
+
+/* buttons */
+button{
+  background:#f7c6d9;
+  border:none;
+  padding:8px 12px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+/* list */
+ul{
+  list-style:none;
+  padding:0;
+}
+
+li{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  justify-content:space-between;
+  padding:10px;
+  background:#1f1f1f;
+  margin:5px 0;
+  border-radius:8px;
+}
+
+/* special buttons */
+.pin{
+  background:gold;
+}
+
+.delete{
+  background:red;
+  color:white;
+}
+
+.date{
+  font-size:12px;
+  opacity:0.6;
+}
