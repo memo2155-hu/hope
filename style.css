@@ -43,13 +43,19 @@ h1{
   padding:8px 14px;
   border-radius:8px;
   border:1px solid rgba(255,255,255,0.2);
-  background:rgba(0,0,0,0.3);
-  color:#fff;
+  background:rgba(255,255,255,0.08);
+  color:white;
   cursor:pointer;
+  transition:0.2s;
+}
+
+.nav-btn:hover{
+  transform:scale(1.05);
 }
 
 .nav-btn.active{
-  background:#2563eb;
+  background:#f7c6d9; /* powder pink */
+  color:#2b2b2b;
 }
 
 /* search */
@@ -69,6 +75,12 @@ h1{
 /* sections */
 .section{
   padding:20px;
+  animation:fade 0.3s ease;
+}
+
+@keyframes fade{
+  from{opacity:0; transform:translateY(10px);}
+  to{opacity:1; transform:translateY(0);}
 }
 
 .hidden{
@@ -100,20 +112,27 @@ h1{
 
 /* inputs */
 input{
-  padding:10px;
   width:60%;
+  padding:10px;
   border-radius:8px;
   border:none;
+  outline:none;
 }
 
-/* buttons */
+/* BUTTONS (POWDER PINK) */
 button{
   padding:8px 12px;
   border:none;
   border-radius:8px;
-  background:#2563eb;
-  color:white;
+  background:#f7c6d9;  /* powder pink */
+  color:#2b2b2b;
   cursor:pointer;
+  transition:0.2s;
+}
+
+button:hover{
+  background:#f3a9c3;
+  transform:scale(1.05);
 }
 
 /* list */
@@ -131,15 +150,26 @@ li{
   border-radius:10px;
 }
 
+/* EDIT button */
+.edit{
+  background:#f7c6d9;
+  color:#2b2b2b;
+  border:none;
+  border-radius:6px;
+  padding:4px 8px;
+}
+
+/* DELETE button */
 .delete{
-  background:red;
+  background:#ff6b6b;
   color:white;
   border:none;
   border-radius:6px;
+  padding:4px 8px;
 }
 
-.edit{
-  background:#f59e0b;
-  border:none;
-  border-radius:6px;
+/* chart */
+canvas{
+  margin-top:20px;
+  max-width:400px;
 }
