@@ -105,23 +105,37 @@ input{
   border-radius:8px;
   border:none;
 }
-
-/* buttons */
+/* FORCE BUTTON COLOR */
 button{
+  background:#f7c6d9 !important; /* powder pink */
+  color:#2b2b2b !important;
+  border:none !important;
   padding:8px 12px;
-  border:none;
   border-radius:8px;
-  background:#2563eb;
-  color:white;
   cursor:pointer;
 }
 
-/* list */
-ul{
-  list-style:none;
-  padding:0;
+/* hover */
+button:hover{
+  background:#f3a9c3 !important;
 }
 
+/* delete */
+.delete{
+  background:#ff4d4d !important;
+  color:white !important;
+}
+
+/* pin */
+.pin{
+  background:#ffd700 !important;
+}
+
+/* active nav */
+.nav-btn.active{
+  background:#f7c6d9 !important;
+  color:#2b2b2b !important;
+}
 li{
   display:flex;
   justify-content:space-between;
